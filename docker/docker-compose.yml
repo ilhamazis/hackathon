@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  webapps1:
+    container_name: webapps1
+    image: go-docker:1.0
+    ports:
+      - 3000:3000
+    networks:
+      - webapps
+  webapps2:
+    container_name: webapps2
+    image: go-docker:2.0
+    ports:
+      - 3001:3001
+    networks:
+      - webapps
+    depends_on:
+      - webapps1
+
+networks:
+  webapps:
+    name: webapps
